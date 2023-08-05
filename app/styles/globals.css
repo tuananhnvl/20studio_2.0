@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "CormorantBold";
+  src: url("../fonts/Cormorant-Bold.ttf");   
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantBoldItalic";
+  src: url("../fonts/Cormorant-BoldItalic.ttf");   
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotu";
+  src: url("../fonts/Gotu-Regular.ttf");   
+  font-display: swap;
+}
+:root {
+  --tw-content: "(\a0";
+  --tw-content: "\a0)";
+
+  --nav-z-index: 100;
+  --nav-height:10vh;
+}
+
+* {
+  font-family: "CormorantBold";
+  box-sizing: border-box;
+}
+button , a {
+  cursor: pointer;
+}
+body,html {
+  padding: 0;
+  margin: 0;
+  background-color:rgb(231, 228, 229);
+  overflow: hidden;
+}
+section {
+  max-width: 1300px !important;
+  margin: 0 auto !important;
+  margin-top:var(--nav-height) !important;
+}
+.max-w-1k4 {
+ /*  max-width: 1300px !important;
+  margin: 0 auto !important; */
+}
+

@@ -1,0 +1,23 @@
+{
+  "name": "20studio_2.0",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@barba/core": "^2.9.7",
+    "@studio-freight/lenis": "^1.0.19",
+    "framer-motion": "^10.15.0",
+    "next": "13.4.12",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "^6.0.7"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4"
+  }
+}

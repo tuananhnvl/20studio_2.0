@@ -1,0 +1,159 @@
+.aboutus_slogan {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.aboutus_slogan > h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 100px;
+    line-height: 100%;
+
+    -webkit-transform: scale(1,1.2);
+    -moz-transform: scale(1,1.2);
+    -o-transform: scale(1,1.2);
+    transform: scale(1,1.2);
+}
+.aboutus_slogan > h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 128px;
+    font-family: fantasy;
+    line-height: 100%;
+    display: inline-block;
+    -webkit-transform: scale(1.5,1);
+    -moz-transform: scale(1.5,1);
+    -o-transform: scale(1.5,1);
+    transform: scale(1.5,1);
+}
+
+
+.aboutus_form {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 42px;
+    box-sizing: border-box;
+}
+.aboutus_form > .form,
+.aboutus_form > .img {
+    width: 50%;
+    height: 100vh;
+}
+
+.aboutus_form > .form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    justify-content: center;
+}
+.aboutus_form > .form * {
+    margin-top: 50px;
+}
+.aboutus_form > .form > h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 50px;
+    font-family: fantasy;
+    line-height: 100%;
+    display: inline-block;
+    transform: scale(1.5,1);
+    text-align: center;
+}
+.aboutus_form > .form input,
+.aboutus_form > .form textarea {
+    background: transparent;
+    border:none;
+    padding: 10px 0 10px 0px;
+    border-bottom:  1px solid rgb(186, 186, 186);
+}
+.aboutus_form > .form input:focus,
+.aboutus_form > .form textarea:focus {
+   
+    outline: none;
+    border-bottom:  1px solid gray;
+}
+.btn-from-send {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px 40px;
+    border-radius: 50px;
+}
+
+.aboutus_form > .img {
+    
+    height:100vh;
+    background: url(../../public/img/contact-form.jpg);
+    background-size: cover;
+
+}
+
+
+.aboutus_qoute {
+    height: 50vh;
+    width:100%;
+    position: relative;
+    margin: 200px 0;
+
+}
+.aboutus_qoute .content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.aboutus_qoute .content p {
+    max-width: 72%;
+    font-size: 50px;
+    line-height: 50px; 
+    text-align: center;
+    transform: scale(1,1.2);
+}
+.mask-dot {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+   
+}
+
+.mask-dot > .dot:nth-child(n) {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    display: block;
+    background: black;
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+}
+.mask-dot > .dot:nth-child(1) {
+    top:0;
+    left:0;
+}
+.mask-dot > .dot:nth-child(2) {
+    top:0;
+    left:50%;
+}
+.mask-dot > .dot:nth-child(3) {
+    top:0;
+    left:100%;
+}
+.mask-dot > .dot:nth-child(4) {
+    top:100%;
+    left:0;
+}
+.mask-dot > .dot:nth-child(5) {
+    top:100%;
+    left:50%;
+}
+.mask-dot > .dot:nth-child(6) {
+    top:100%;
+    left:100%;
+}
