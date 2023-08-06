@@ -1,0 +1,35 @@
+.vavava {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.slider-img-kkkkk {
+    border: 1px solid gray;
+    width: 80vw;
+   
+    height:72vh;
+  
+    z-index: 9999;
+    position: absolute;
+    cursor: pointer;
+
+    display: flex;
+    user-select:unset;
+}
+.slider-img-kkkkk img {
+    height: 100%;
+    width: auto;
+    user-select:unset;
+    pointer-events: none;
+}
+
+
+.slider-img-kkkkk > div:nth-child(n) {
+    position: relative;
+    width: 600px;
+    height: 100%;
+    background: url(https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXJsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60);
+    background-size: cover;
+    margin-right: 50px;
+}
