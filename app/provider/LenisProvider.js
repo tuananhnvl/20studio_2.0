@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, createContext, useRef, useState } from 'react'
 import Lenis from '@studio-freight/lenis'
+
 export const LenisContext = createContext({});
 export function LenisProvider({ children }) {
     const ls = typeof window !== "undefined" ? window.localStorage : null;
@@ -34,6 +35,7 @@ export function LenisProvider({ children }) {
   
     return (
         <LenisContext.Provider value={contextLenis}>
+        
             {children}
         </LenisContext.Provider>
     );

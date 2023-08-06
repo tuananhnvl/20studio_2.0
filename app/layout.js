@@ -1,10 +1,9 @@
 //import './styles/globals.css'
 //import StyledComponentsRegistry from './lib/registry';
-import Navbar from './components/Navbar'
+
 import { LenisProvider } from './provider/LenisProvider.js'
 import './styles/globals.css'
-/* import barba from '@barba/core';
- */
+import Navbar from './components/Navbar.js';
 
 export default function RootLayout({ children }) {
  
@@ -16,7 +15,6 @@ export default function RootLayout({ children }) {
       <body >
         <LenisProvider>
           <Navbar/>
-       {/*    <StyledComponentsRegistry>{children}</StyledComponentsRegistry> */}
           {children}
         </LenisProvider>
       

@@ -1,5 +1,5 @@
 "use client"
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useRef,useState} from 'react'
 
 import '.././styles/navbar.css'
 export default function Navbar() {
@@ -7,32 +7,35 @@ export default function Navbar() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const listId = ['list-menu','contact-menu','bg-anim-navbar']
     const listIdPage = ['','aboutus','portfolio','contact']
-   
-    useEffect(() => {
-        for (let i = 0; i < listIdPage.length; i++) {
-            if(`/${listIdPage[i]}` == window.location.pathname) {
-                if( i === 0) {
-                    document.getElementById('home').classList.add('show-tag')
+    const ref = useRef(null)
+   /*  useEffect(() => {
+        if (typeof window !== 'undefined') {
+            for (let i = 0; i < listIdPage.length; i++) {
+                if(`/${listIdPage[i]}` == window.location.pathname) {
+                    if( i === 0) {
+                        document.getElementById('home').classList.add('show-tag')
+                    }else{
+                        document.getElementById(listIdPage[i]).classList.add('show-tag')
+                    }
+                 
                 }else{
-                    document.getElementById(listIdPage[i]).classList.add('show-tag')
+                    if( i === 0) {
+                        document.getElementById('home').classList.add('hidden-tag')
+                    }else{
+                        document.getElementById(listIdPage[i]).classList.add('hidden-tag')
+                    }
+                   
                 }
-             
-            }else{
-                if( i === 0) {
-                    document.getElementById('home').classList.add('hidden-tag')
-                }else{
-                    document.getElementById(listIdPage[i]).classList.add('hidden-tag')
-                }
-               
-            }
-         }
-    })
+             }
+          }
+     
+    },[]) */
     
     const toggleNav = () => {
       setIsNavOpen(prevState => !prevState);
     };
     return (
-        <nav className={`navbar-wrapper ${isNavOpen ? 'nav-open-checkk' : ''}`}>
+        <nav ref={ref} className={`navbar-wrapper ${isNavOpen ? 'nav-open-checkk' : ''}`}>
             <div className={`heading-menu max-w-1k4 ${isNavOpen ? 'nav-open-checkk' : ''}`}>
                 <button className='left' onClick={toggleNav}>(MENU)</button>
                 <div className='logo'>20STUDIO</div>

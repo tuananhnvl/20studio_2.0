@@ -1,10 +1,26 @@
 "use client"
-import { Suspense, useEffect, useRef, useMemo } from 'react';
+import { Suspense, useEffect, useRef, useMemo, useState } from 'react';
 import './styles/home.css'
 import * as THREE from 'three'
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { textures } from './utils/load-img';
+import { Canvas, useFrame, useThree ,useLoader} from '@react-three/fiber';
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import shaderGallery from './data/shaderGalleryItem'
+
+
+const imgUnPlash = [
+  './img-gallery/1.jpg',
+  './img-gallery/2.jpg',
+  './img-gallery/3.jpg',
+  './img-gallery/4.jpg',
+  './img-gallery/5.jpg',
+  './img-gallery/6.jpg',
+  './img-gallery/7.jpg',
+  './img-gallery/8.jpg',
+  './img-gallery/9.jpg',
+  './img-gallery/10.jpg'
+
+]
+
 function IMG({ texture, data }) {
   const ref = useRef(null)
   const uniforms = useMemo(
@@ -45,9 +61,6 @@ function IMG({ texture, data }) {
   );
 
 
-
-  let widthImg = texture.source.data.naturalWidth / 500
-  let heightImg = texture.source.data.naturalHeight / 500
   useFrame(({ clock }) => {
     if (ref) {
       ref.current.position.y = localStorage.getItem('posY') * 2.2 + data * 1.2
@@ -60,7 +73,7 @@ function IMG({ texture, data }) {
   return (
     <group position={[0, data, 0]}>
       <mesh ref={ref}>
-        <planeGeometry args={[widthImg, heightImg, 10, 10]} />
+        <planeGeometry args={[texture.source.data.naturalWidth / 500, texture.source.data.naturalHeight / 500, 10, 10]} />
 
         <shaderMaterial
           fragmentShader={shaderGallery['frag']}
@@ -75,15 +88,27 @@ function IMG({ texture, data }) {
 }
 function IMGLIST() {
   const { camera } = useThree()
-
+  const [texturesLoaded, setTexturesLoaded] = useState(false);
   const grref = useRef()
+  let offsetscrollY
   useEffect(() => {
     camera.rotation.set(THREE.MathUtils.degToRad(4.2), THREE.MathUtils.degToRad(10), THREE.MathUtils.degToRad(2));
     camera.position.z = 1.42
     grref.current.position.x = 0.72
     camera.pov = 95
+
+
+
   }, [grref, camera])
-  let offsetscrollY
+
+
+
+ const textures = imgUnPlash.map((url, index) =>
+        useLoader(TextureLoader, url)
+  );
+  
+
+ 
   useFrame(() => {
 
     let vec2Clone = new THREE.Vector2(0, grref.current.position.y)
@@ -105,13 +130,14 @@ function IMGLIST() {
   )
 }
 export default function Home() {
-
+  const ref = useRef(null)
+  const refNavSlider = useRef(null)
+  const refitemxkaojf = useRef(null)
+  const reftagbrand = useRef(null)
   useEffect(() => {
 
-    const navSlider = document.getElementById("nav-slider")
-    const navItemSlider = [...document.querySelectorAll(".item-xkaojf")]
-    const listTag = [...document.querySelectorAll(".tag-item-brand")]
-    const tag = document.getElementById("tag-brand")
+    const navItemSlider = Array.from(refNavSlider.current.children)
+
     let speed = 0;
     let position = 0;
     let roude = 0;
@@ -123,12 +149,12 @@ export default function Home() {
     const handleScroll = (e) => {
       speed += e.deltaY * 0.0003;
     };
-    navSlider.addEventListener('mouseenter', () => {
+    refNavSlider.current.addEventListener('mouseenter', () => {
 
       attractMode = true
 
     })
-    navSlider.addEventListener('mouseleave', () => {
+    refNavSlider.current.addEventListener('mouseleave', () => {
 
       attractMode = false
     })
@@ -155,50 +181,52 @@ export default function Home() {
 
 
       }
-      tag.style.transform = `translateX(${position * 360}px)`;
+      reftagbrand.current.style.transform = `translateX(${position * 360}px)`;
       localStorage.setItem('posY', position)
 
 
       window.requestAnimationFrame(raf);
     };
-
-    window.addEventListener('wheel', handleScroll);
     raf();
+    window.addEventListener('wheel', handleScroll);
+
 
     return () => {
       window.removeEventListener('wheel', handleScroll);
     };
+
+
   }, []);
 
   return (
     <main>
       <div className='slider-wrapper'>
-        <div className='nav-slider' id='nav-slider' >
-          <div className='item-xkaojf' data-nav="0">0</div>
-          <div className='item-xkaojf' data-nav="1">1</div>
-          <div className='item-xkaojf' data-nav="2">2</div>
-          <div className='item-xkaojf' data-nav="3">3</div>
-          <div className='item-xkaojf' data-nav="4">4</div>
-          <div className='item-xkaojf' data-nav="5">5</div>
-          <div className='item-xkaojf' data-nav="6">6</div>
-          <div className='item-xkaojf' data-nav="7">7</div>
-          <div className='item-xkaojf' data-nav="8">8</div>
-          <div className='item-xkaojf' data-nav="9">9</div>
+        <div className='nav-slider' id='nav-slider' ref={refNavSlider}>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="0">0</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="1">1</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="2">2</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="3">3</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="4">4</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="5">5</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="6">6</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="7">7</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="8">8</div>
+          <div ref={refitemxkaojf} className='item-xkaojf' data-nav="9">9</div>
 
         </div>
         <div className='img-slider'>
           <div id='img-ww'>
             <Canvas >
-              <Suspense>
+              <Suspense fallback={null}>
                 <IMGLIST />
 
               </Suspense>
-              {/*      <OrbitControls/> */}
+     
             </Canvas>
           </div>
 
         </div>
-        <div className='tag-brand' id="tag-brand">
+        <div className='tag-brand' id="tag-brand" ref={reftagbrand}>
           <div className='tag-item-brand'>
             <h3>Modian&nbsp;Beef</h3>
             <span>2017&nbsp;-&nbsp;2022</span>
